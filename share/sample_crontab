@@ -1,0 +1,2 @@
+# run Axe-Sentinel every two minutes
+*/2 * * * * cd /home/YOURUSERNAME/sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1
