@@ -2,7 +2,7 @@
 
 An all-powerful toolset for Axe.
 
-[![Build Status](https://travis-ci.org/axerunners/sentinel.svg?branch=master)](https://travis-ci.org/axerunners/sentinel)
+[![Build Status](https://travis-ci.org/AXErunners/sentinel.svg?branch=master)](https://travis-ci.org/axerunners/sentinel)
 
 Sentinel is an autonomous agent for persisting, processing and automating Axe V12.1 governance objects and tasks, and for expanded functions in the upcoming Axe V13 release (Evolution).
 
