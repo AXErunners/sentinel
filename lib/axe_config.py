@@ -34,7 +34,7 @@ class AxeConfig():
         creds = {key: value for (key, value) in match}
 
         # standard Axe defaults...
-        default_port = 9998 if (network == 'mainnet') else 19998
+        default_port = 99037 if (network == 'mainnet') else 99036
 
         # use default port for network if not specified in axe.conf
         if not ('port' in creds):
