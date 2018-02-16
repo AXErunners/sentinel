@@ -1,4 +1,4 @@
-# Axe Sentinel
+# AXE Sentinel
 
 An all-powerful toolset for Axe.
 
