@@ -3,6 +3,7 @@
 An all-powerful toolset for Axe.
 
 [![Build Status](https://travis-ci.org/AXErunners/sentinel.svg?branch=master)](https://travis-ci.org/AXErunners/sentinel)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cf201db73c11d50c78b4/maintainability)](https://codeclimate.com/github/AXErunners/sentinel/maintainability)
 
 ## Installation
 
