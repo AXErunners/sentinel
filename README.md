@@ -32,9 +32,9 @@ Set up a crontab entry to call Sentinel every minute:
 
     $ crontab -e
 
-In the crontab editor, add the lines below, replacing '/home/YOURUSERNAME/sentinel' to the path where you cloned sentinel to:
+In the crontab editor, add the lines below, replacing '/home/YOURUSERNAME/.axecore/sentinel' to the path where you cloned sentinel to:
 
-    * * * * * cd /home/YOURUSERNAME/sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1
+    * * * * * cd /home/YOURUSERNAME/.axecore/sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1
 
 ### 4. Test the Configuration
 
