@@ -22,6 +22,7 @@ Update system packages and ensure virtualenv is installed:
 
 Clone the Sentinel repo and install Python dependencies.
 
+    $ cd ~ && cd .axecore
     $ git clone https://github.com/axerunners/sentinel.git && cd sentinel
     $ virtualenv ./venv
     $ ./venv/bin/pip install -r requirements.txt
