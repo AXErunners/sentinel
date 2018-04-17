@@ -1,6 +1,6 @@
 # AXE Sentinel
 
-An all-powerful toolset for Axe.
+An all-powerful toolset for AXE.
 
 [![Build Status](https://travis-ci.org/AXErunners/sentinel.svg?branch=master)](https://travis-ci.org/AXErunners/sentinel)
 [![Maintainability](https://api.codeclimate.com/v1/badges/cf201db73c11d50c78b4/maintainability)](https://codeclimate.com/github/AXErunners/sentinel/maintainability)
@@ -73,4 +73,4 @@ Commit messages should be verbose by default, consisting of a short subject line
 
 ### License
 
-Released under the MIT license, under the same terms as AxeCore itself. See [LICENSE](LICENSE) for more info.
+Released under the MIT license, under the same terms as AXE core itself. See [LICENSE](LICENSE) for more info.
