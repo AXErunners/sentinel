@@ -1,6 +1,6 @@
 # AXE Sentinel
 
-An all-powerful toolset for Axe.
+An all-powerful toolset for AXE.
 
 [![Build Status](https://travis-ci.org/AXErunners/sentinel.svg?branch=master)](https://travis-ci.org/AXErunners/sentinel)
 
