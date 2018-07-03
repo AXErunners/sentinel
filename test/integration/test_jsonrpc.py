@@ -16,12 +16,12 @@ def test_axed():
     config_text = AxeConfig.slurp_config_file(config.axe_conf)
     network = 'mainnet'
     is_testnet = False
-    genesis_hash = u'00000c33631ca6f2f61368991ce2dc03306b5bb50bf7cede5cfbba6db38e52e6'
+    genesis_hash = u'00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6'
     for line in config_text.split("\n"):
         if line.startswith('testnet=1'):
             network = 'testnet'
             is_testnet = True
-            genesis_hash = u'00000381388b90aff350a4d5913d4a50fed79159a3a687470e01ca1527e87568'
+            genesis_hash = u'00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c'
 
     creds = AxeConfig.get_rpc_creds(config_text, network)
     axed = AxeDaemon(**creds)

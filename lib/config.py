@@ -10,16 +10,19 @@ default_sentinel_config = os.path.normpath(
 )
 sentinel_config_file = os.environ.get('SENTINEL_CONFIG', default_sentinel_config)
 sentinel_cfg = AxeConfig.tokenize(sentinel_config_file)
-sentinel_version = "1.1.0"
+sentinel_version = "1.2.0"
 min_axed_proto_version_with_sentinel_ping = 70207
 
 
 def get_axe_conf():
-    home = os.environ.get('HOME')
+    if sys.platform == 'win32':
+        axe_conf = os.path.join(os.getenv('APPDATA'), "AxeCore/axe.conf")
+    else:
+        home = os.environ.get('HOME')
 
-    axe_conf = os.path.join(home, ".axecore/axe.conf")
-    if sys.platform == 'darwin':
-        axe_conf = os.path.join(home, "Library/Application Support/AxeCore/axe.conf")
+        axe_conf = os.path.join(home, ".axecore/axe.conf")
+        if sys.platform == 'darwin':
+            axe_conf = os.path.join(home, "Library/Application Support/AxeCore/axe.conf")
 
     axe_conf = sentinel_cfg.get('axe_conf', axe_conf)
 
@@ -28,6 +31,10 @@ def get_axe_conf():
 
 def get_network():
     return sentinel_cfg.get('network', 'mainnet')
+
+
+def get_rpchost():
+    return sentinel_cfg.get('rpchost', '127.0.0.1')
 
 
 def sqlite_test_db_name(sqlite_file_path):
@@ -81,4 +88,5 @@ def get_db_conn():
 
 axe_conf = get_axe_conf()
 network = get_network()
+rpc_host = get_rpchost()
 db = get_db_conn()

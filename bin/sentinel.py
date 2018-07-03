@@ -6,7 +6,7 @@ import init
 import config
 import misc
 from axed import AxeDaemon
-from models import Superblock, Proposal, GovernanceObject, Watchdog
+from models import Superblock, Proposal, GovernanceObject
 from models import VoteSignals, VoteOutcomes, Transient
 import socket
 from misc import printdbg
@@ -22,42 +22,6 @@ import argparse
 # sync axed gobject list with our local relational DB backend
 def perform_axed_object_sync(axed):
     GovernanceObject.sync(axed)
-
-
-# delete old watchdog objects, create new when necessary
-def watchdog_check(axed):
-    printdbg("in watchdog_check")
-
-    # delete expired watchdogs
-    for wd in Watchdog.expired(axed):
-        printdbg("\tFound expired watchdog [%s], voting to delete" % wd.object_hash)
-        wd.vote(axed, VoteSignals.delete, VoteOutcomes.yes)
-
-    # now, get all the active ones...
-    active_wd = Watchdog.active(axed)
-    active_count = active_wd.count()
-
-    # none exist, submit a new one to the network
-    if 0 == active_count:
-        # create/submit one
-        printdbg("\tNo watchdogs exist... submitting new one.")
-        wd = Watchdog(created_at=int(time.time()))
-        wd.submit(axed)
-
-    else:
-        wd_list = sorted(active_wd, key=lambda wd: wd.object_hash)
-
-        # highest hash wins
-        winner = wd_list.pop()
-        printdbg("\tFound winning watchdog [%s], voting VALID" % winner.object_hash)
-        winner.vote(axed, VoteSignals.valid, VoteOutcomes.yes)
-
-        # if remaining Watchdogs exist in the list, vote delete
-        for wd in wd_list:
-            printdbg("\tFound losing watchdog [%s], voting DELETE" % wd.object_hash)
-            wd.vote(axed, VoteSignals.delete, VoteOutcomes.yes)
-
-    printdbg("leaving watchdog_check")
 
 
 def prune_expired_proposals(axed):
@@ -110,7 +74,8 @@ def attempt_superblock_creation(axed):
     budget_max = axed.get_superblock_budget_allocation(event_block_height)
     sb_epoch_time = axed.block_height_to_epoch(event_block_height)
 
-    sb = axelib.create_superblock(proposals, event_block_height, budget_max, sb_epoch_time)
+    maxgovobjdatasize = axed.govinfo['maxgovobjdatasize']
+    sb = axelib.create_superblock(proposals, event_block_height, budget_max, sb_epoch_time, maxgovobjdatasize)
     if not sb:
         printdbg("No superblock created, sorry. Returning.")
         return
@@ -207,9 +172,6 @@ def main():
 
     if axed.has_sentinel_ping:
         sentinel_ping(axed)
-    else:
-        # delete old watchdog objects, create a new if necessary
-        watchdog_check(axed)
 
     # auto vote network objects as valid/invalid
     # check_object_validity(axed)
