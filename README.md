@@ -4,9 +4,9 @@ An all-powerful toolset for AXE.
 
 [![Build Status](https://travis-ci.org/AXErunners/sentinel.svg?branch=master)](https://travis-ci.org/AXErunners/sentinel)
 
-Sentinel is an autonomous agent for persisting, processing and automating Axe governance objects and tasks, and for expanded functions in the upcoming Axe V13 release (Evolution).
+Sentinel is an autonomous agent for persisting, processing and automating AXE governance objects and tasks, and for expanded functions in the upcoming AXE 1.1.6
 
-Sentinel is implemented as a Python application that binds to a local version 12 axed instance on each Axe Masternode.
+Sentinel is implemented as a Python application that binds to a local version 1.1 axed instance on each AXE Masternode.
 
 This guide covers installing Sentinel onto an existing Masternode in Ubuntu 14.04 / 16.04.
 
@@ -23,7 +23,7 @@ Update system packages and ensure virtualenv is installed:
     $ sudo apt-get update
     $ sudo apt-get -y install python-virtualenv
 
-Make sure the local Axe daemon running is at least version 12.1 (120100)
+Make sure the local AXE daemon running is at least version 1.1.5
 
     $ axe-cli getinfo | grep version
 
