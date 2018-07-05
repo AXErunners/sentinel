@@ -108,7 +108,7 @@ def test_extract_object():
     expected = {
         'type': 1,
         'name': 'jack-sparrow-new-ship',
-        'url': 'https://www.axecentral.org/black-pearl',
+        'url': 'https://www.dashcentral.org/black-pearl',
         'start_epoch': 1521429194,
         'end_epoch': 1547183994,
         'payment_address': 'yYe8KwyaUu5YswSYmB3q3ryx8XTUu9y7Ui',
