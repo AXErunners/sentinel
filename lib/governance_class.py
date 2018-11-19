@@ -35,8 +35,7 @@ class GovernanceClass(object):
             self.vote(axed, models.VoteSignals.valid, models.VoteOutcomes.no)
 
     def get_submit_command(self):
-        import axelib
-        obj_data = axelib.SHIM_serialise_for_axed(self.serialise())
+        obj_data = self.serialise()
 
         # new objects won't have parent_hash, revision, etc...
         cmd = ['gobject', 'submit', '0', '1', str(int(time.time())), obj_data]
@@ -65,10 +64,6 @@ class GovernanceClass(object):
         import simplejson
 
         return binascii.hexlify(simplejson.dumps(self.get_dict(), sort_keys=True).encode('utf-8')).decode('utf-8')
-
-    def axed_serialise(self):
-        import axelib
-        return axelib.SHIM_serialise_for_axed(self.serialise())
 
     @classmethod
     def serialisable_fields(self):

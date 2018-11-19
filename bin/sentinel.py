@@ -74,8 +74,7 @@ def attempt_superblock_creation(axed):
     budget_max = axed.get_superblock_budget_allocation(event_block_height)
     sb_epoch_time = axed.block_height_to_epoch(event_block_height)
 
-    maxgovobjdatasize = axed.govinfo['maxgovobjdatasize']
-    sb = axelib.create_superblock(proposals, event_block_height, budget_max, sb_epoch_time, maxgovobjdatasize)
+    sb = axelib.create_superblock(proposals, event_block_height, budget_max, sb_epoch_time)
     if not sb:
         printdbg("No superblock created, sorry. Returning.")
         return
