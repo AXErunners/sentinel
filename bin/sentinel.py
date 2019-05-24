@@ -30,15 +30,6 @@ def prune_expired_proposals(axed):
         proposal.vote(axed, VoteSignals.delete, VoteOutcomes.yes)
 
 
-# ping axed
-def sentinel_ping(axed):
-    printdbg("in sentinel_ping")
-
-    axed.ping()
-
-    printdbg("leaving sentinel_ping")
-
-
 def attempt_superblock_creation(axed):
     import axelib
 
@@ -124,6 +115,11 @@ def main():
     axed = AxeDaemon.from_axe_conf(config.axe_conf)
     options = process_args()
 
+    # print version and return if "--version" is an argument
+    if options.version:
+        print("Axe Sentinel v%s" % config.sentinel_version)
+        return
+
     # check axed connectivity
     if not is_axed_port_open(axed):
         print("Cannot connect to axed. Please ensure axed is running and the JSONRPC port is open to Sentinel.")
@@ -169,9 +165,6 @@ def main():
     # load "gobject list" rpc command data, sync objects into internal database
     perform_axed_object_sync(axed)
 
-    if axed.has_sentinel_ping:
-        sentinel_ping(axed)
-
     # auto vote network objects as valid/invalid
     # check_object_validity(axed)
 
@@ -201,6 +194,10 @@ def process_args():
                         action='store_true',
                         help='Bypass scheduler and sync/vote immediately',
                         dest='bypass')
+    parser.add_argument('-v', '--version',
+                        action='store_true',
+                        help='Print the version (Axe Sentinel vX.X.X) and exit')
+
     args = parser.parse_args()
 
     return args
