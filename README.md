@@ -31,7 +31,7 @@ Make sure Python version 3.6.x or above is installed:
 
     python3 --version
 
-Make sure the local AXE Core daemon running is at least version 1.5.
+Make sure the local Axe Core daemon running is at least version 1.5.
 
     $ axed --version | head -n1
 
