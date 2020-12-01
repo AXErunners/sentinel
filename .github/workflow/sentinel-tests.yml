@@ -1,0 +1,27 @@
+name: sentinel tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [2.7, 3.5, 3.6]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: prepare
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        ./share/travis_setup.sh
+    - name: run unit tests
+      run: py.test -svv test/unit/
+    - name: style guide check
+      run: find ./lib ./test ./bin -name \*.py -exec pycodestyle --show-source --ignore=E501,E402,E722,E129,W503,W504 {} +
