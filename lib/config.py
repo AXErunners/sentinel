@@ -10,7 +10,7 @@ default_sentinel_config = os.path.normpath(
 )
 sentinel_config_file = os.environ.get('SENTINEL_CONFIG', default_sentinel_config)
 sentinel_cfg = AxeConfig.tokenize(sentinel_config_file)
-sentinel_version = "1.5.1"
+sentinel_version = "1.5.2"
 
 
 def get_axe_conf():
