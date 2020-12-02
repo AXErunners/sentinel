@@ -1,4 +1,4 @@
-# AXE Sentinel
+# Sentinel
 
 [![Actions Status](https://github.com/AXErunners/sentinel/workflows/sentinel%20tests/badge.svg)](https://github.com/AXErunners/sentinel/actions)
 
