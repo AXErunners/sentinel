@@ -1,6 +1,6 @@
 # AXE Sentinel
 
-[![Build Status](https://travis-ci.org/AXErunners/sentinel.svg?branch=master)](https://travis-ci.org/AXErunners/sentinel)
+[![Actions Status](https://github.com/AXErunners/sentinel/workflows/sentinel%20tests/badge.svg)](https://github.com/AXErunners/sentinel/actions)
 
 > An automated governance helper for AXE Masternodes.
 
